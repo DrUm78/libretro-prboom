@@ -4,7 +4,7 @@ WANT_FLUIDSYNTH ?= 0
 HAVE_LOW_MEMORY ?= 0
 
 ifeq ($(platform),)
-platform = unix
+platform = funkey
 ifeq ($(shell uname -a),)
    platform = win
 else ifneq ($(findstring MINGW,$(shell uname -a)),)
@@ -152,7 +152,7 @@ LIBRARY_NAME = $(TARGET_NAME)_libretro_ios
 
 # (armv7 a7, hard point, neon based) ### 
 # NESC, SNESC, C64 mini 
-else ifeq ($(platform), classic_armv7_a7)
+else ifeq ($(platform), funkey)
 	TARGET := $(TARGET_NAME)_libretro.so
 	fpic := -fPIC
 	SHARED := -shared -Wl,--version-script=libretro/link.T -Wl,-no-undefined

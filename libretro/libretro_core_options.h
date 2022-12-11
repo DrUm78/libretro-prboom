@@ -44,17 +44,18 @@ struct retro_core_option_v2_definition option_defs_us[] = {
       NULL,
       NULL,
       {
-         { "320x200",   NULL },
-         { "640x400",   NULL },
+         //{ "320x200",   NULL },
+         { "320x240",   NULL },
+         /*{ "640x400",   NULL },
          { "960x600",   NULL },
          { "1280x800",  NULL },
          { "1600x1000", NULL },
          { "1920x1200", NULL },
          { "2240x1400", NULL },
-         { "2560x1600", NULL },
+         { "2560x1600", NULL },*/
          { NULL, NULL },
       },
-      "320x200"
+      "320x240"
    },
    {
       "prboom-mouse_on",

@@ -1,0 +1,49 @@
+#!/bin/sh
+
+mkdir -p opk/cores
+
+cd /opt/sdlretro
+git pull
+mkdir -p build/
+cd build/
+cmake -DCMAKE_BUILD_TYPE=Release -DMODEL=funkey ..
+make clean
+make
+/opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip src/sdlretro
+cp src/sdlretro ../../libretro-prboom/opk
+
+cd /opt/libretro-prboom
+git fetch --all
+git merge upstream/master
+make clean
+make
+/opt/FunKey-sdk/bin/arm-funkey-linux-musleabihf-strip prboom_libretro.so
+cp prboom_libretro.so opk/cores/
+
+cp icons/prboom.png opk/
+cp prboom.wad opk/
+cp prboom.sh opk/
+cp AUTHORS COPYING FAQ README opk/
+
+# https://unix.stackexchange.com/questions/219268/how-to-add-new-lines-when-using-echo
+print()
+	case    ${IFS- } in
+	(\ *)   printf  %b\\n "$*";;
+	(*)     IFS=\ $IFS
+	printf  %b\\n "$*"
+	IFS=${IFS#?}
+esac
+
+# Create GMenu2X entry file plus other things
+
+print '[Desktop Entry]
+Name=DOOM
+Comment=PrBoom v2.5.0 for Libretro
+Exec=prboom.sh %f
+Icon=prboom
+Categories=games
+SelectorFilter=wad' > opk/prboom.funkey-s.desktop
+
+mksquashfs opk/ prboom_v2.5.0_funkey-s.opk -all-root -noappend -no-exports -no-xattrs
+
+rm -rf opk/

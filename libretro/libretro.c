@@ -144,8 +144,8 @@ static gamepad_layout_t gp_classic = { // Based on PS1 Doom Port!
 		{ 0 },
 	},
 	{	// gamekey,             menukey
-		{ &key_strafe,          &key_menu_backspace }, // RETRO_DEVICE_ID_JOYPAD_B
-		{ &key_speed,           &key_menu_backspace }, // RETRO DEVICE_ID_JOYPAD_Y
+		{ &key_autorun,         &key_menu_backspace }, // RETRO_DEVICE_ID_JOYPAD_B
+		{ &key_strafe,          &key_menu_backspace }, // RETRO DEVICE_ID_JOYPAD_Y
 		{ &key_map,             &key_menu_backspace }, // RETRO_DEVICE_ID_JOYPAD_SELECT
 		{ &key_menu_escape,     &key_menu_escape },    // RETRO_DEVICE_ID_JOYPAD_START
 		{ &key_up,              &key_menu_up },        // RETRO_DEVICE_ID_JOYPAD_UP
@@ -154,11 +154,9 @@ static gamepad_layout_t gp_classic = { // Based on PS1 Doom Port!
 		{ &key_right,           &key_menu_right },     // RETRO_DEVICE_ID_JOYPAD_RIGHT
 		{ &key_use,             &key_menu_enter },     // RETRO_DEVICE_ID_JOYPAD_A
 		{ &key_fire,            &key_menu_enter },     // RETRO_DEVICE_ID_JOYPAD_X
-		{ &key_strafeleft,      &key_menu_left },      // RETRO_DEVICE_ID_JOYPAD_L1
-		{ &key_straferight,     &key_menu_right },     // RETRO_DEVICE_ID_JOYPAD_R1
-		{ &key_weaponcycledown, &key_menu_backspace }, // RETRO_DEVICE_ID_JOYPAD_L2
-		{ &key_weaponcycleup,   &key_menu_enter },     // RETRO_DEVICE_ID_JOYPAD_R2
-		{ &key_autorun,         &key_menu_enter },     // RETRO_DEVICE_ID_JOYPAD_L3
+		{ &key_weaponcycledown, &key_menu_left },      // RETRO_DEVICE_ID_JOYPAD_L1
+		{ &key_weaponcycleup,   &key_menu_right },     // RETRO_DEVICE_ID_JOYPAD_R1
+		{ &key_speed,           &key_menu_enter },     // RETRO_DEVICE_ID_JOYPAD_L3
 		{ &key_reverse,         &key_menu_backspace }, // RETRO_DEVICE_ID_JOYPAD_R3
 	},
 	16,
@@ -369,13 +367,13 @@ void retro_get_system_av_info(struct retro_system_av_info *info)
     case 0:
       info->timing.fps = 35.0;
       break;
-    case 1:
+    /*case 1:
       info->timing.fps = 40.0;
-      break;
-    case 2:
+      break;*/
+    case 1:
       info->timing.fps = 50.0;
       break;
-    case 3:
+    /*case 3:
       info->timing.fps = 60.0;
       break;
     case 4:
@@ -416,7 +414,7 @@ void retro_get_system_av_info(struct retro_system_av_info *info)
       break;
     case 16:
       info->timing.fps = 360.0;
-      break;
+      break;*/
     default:
       info->timing.fps = TICRATE;
       break;

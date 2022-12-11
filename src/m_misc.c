@@ -198,7 +198,7 @@ default_t defaults[] =
    def_int,ss_none, NULL, NULL}, // 1=take special steps ensuring demo sync, 2=only during recordings
   {"level_precache",{(int*)&precache, NULL},{0, NULL},0,1,
    def_bool,ss_none, NULL, NULL}, // precache level data?
-  {"demo_smoothturns", {&demo_smoothturns, NULL},  {0, NULL},0,1,
+  {"demo_smoothturns", {&demo_smoothturns, NULL},  {1, NULL},0,1,
    def_bool,ss_gen, NULL, NULL},
   {"demo_smoothturnsfactor", {&demo_smoothturnsfactor, NULL},  {6, NULL},1,SMOOTH_PLAYING_MAXFACTOR,
    def_int,ss_gen, NULL, NULL},
@@ -255,7 +255,7 @@ default_t defaults[] =
    def_bool,ss_stat, NULL, NULL}, // disables doubled card and skull key display on status bar
   {"show_messages",{&showMessages, NULL},{1, NULL},0,1,
    def_bool,ss_none, NULL, NULL}, // enables message display
-  {"autorun",{&autorun, NULL},{0, NULL},0,1,  // killough 3/6/98: preserve autorun across games
+  {"autorun",{&autorun, NULL},{1, NULL},0,1,  // killough 3/6/98: preserve autorun across games
    def_bool,ss_none, NULL, NULL},
 
   {"Compatibility settings",{NULL},{0},UL,UL,def_none,ss_none, NULL, NULL},
@@ -301,9 +301,9 @@ default_t defaults[] =
   {"Video settings",{NULL, NULL},{0, NULL},UL,UL,def_none,ss_none, NULL, NULL},
   {"screenblocks",{&screenblocks, NULL},{0, NULL},0,1,  // used to be int 3-11 (now just boolean)
    def_int,ss_none, NULL, NULL},
-  {"usegamma",{&usegamma, NULL},{0, NULL},0,4, //jff 3/6/98 fix erroneous upper limit in range
+  {"usegamma",{&usegamma, NULL},{1, NULL},0,4, //jff 3/6/98 fix erroneous upper limit in range
    def_int,ss_gen, NULL, NULL}, // gamma correction level // killough 1/18/98
-  {"uncapped_framerate", {&movement_smooth, NULL},  {3, NULL},0,16,
+  {"uncapped_framerate", {&movement_smooth, NULL},  {1, NULL},0,1,
    def_int,ss_gen, NULL, NULL},
   {"filter_wall",{(int*)&drawvars.filterwall, NULL},{RDRAW_FILTER_POINT, NULL},
    RDRAW_FILTER_POINT, RDRAW_FILTER_ROUNDED, def_int,ss_gen, NULL, NULL},
