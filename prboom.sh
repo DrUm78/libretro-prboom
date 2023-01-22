@@ -1,7 +1,7 @@
 #!/bin/sh
 # Check whether prboom.wad is there or not
-if [ ! -f /mnt/FunKey/.sdlretro/system/prboom.wad ]; then
-	mkdir -p /mnt/FunKey/.sdlretro/system
-	cp -f prboom.wad /mnt/FunKey/.sdlretro/system
+if [ ! -f /mnt/FunKey/.picoarch/system/prboom.wad ]; then
+	mkdir -p /mnt/FunKey/.picoarch/system
+	cp -f prboom.wad /mnt/FunKey/.picoarch/system
 fi
-./sdlretro "$1"
+./picoarch ./prboom_libretro.so
