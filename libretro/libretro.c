@@ -373,10 +373,10 @@ void retro_get_system_av_info(struct retro_system_av_info *info)
     case 1:
       info->timing.fps = 50.0;
       break;
-    /*case 3:
+    case 2:
       info->timing.fps = 60.0;
       break;
-    case 4:
+    /*case 4:
       info->timing.fps = 70.0;
       break;
     case 5:

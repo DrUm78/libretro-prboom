@@ -2845,7 +2845,7 @@ enum {
 #define G_YA3 (G_YA2 + 16)
 #define GF_X 76
 
-static const char *framerates[] = {"Original", "FunKey S", NULL};
+static const char *framerates[] = {"35fps", "50fps", "60fps", NULL};
 static const char *gamma_lvls[] = {"OFF", "Lv. 1", "Lv. 2", "Lv. 3", "Lv. 4", NULL};
 static const char *mus_external_opts[] = {"Never", "Always", "Only IWAD", NULL};
 
