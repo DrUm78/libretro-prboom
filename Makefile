@@ -75,6 +75,7 @@ ifeq ($(platform), unix)
    fpic := -fPIC
    SHARED := -shared -Wl,--version-script=libretro/link.T -Wl,--no-undefined -Wl,--as-needed
    CFLAGS += -std=c99
+   CFLAGS += -D_POSIX_C_SOURCE=199309L
 else ifeq ($(platform), linux-portable)
 	EXT    ?= so
    TARGET := $(TARGET_NAME)_libretro.$(EXT)
@@ -310,6 +311,7 @@ else ifeq ($(platform), wiiu)
    CC = $(DEVKITPPC)/bin/powerpc-eabi-gcc$(EXE_EXT)
    AR = $(DEVKITPPC)/bin/powerpc-eabi-ar$(EXE_EXT)
    CFLAGS += -DGEKKO -DHW_RVL -DWIIU -mcpu=750 -meabi -mhard-float
+   CFLAGS += -ffunction-sections -fdata-sections -D__wiiu__ -D__wut__
    STATIC_LINKING = 1
 
 # Nintendo Switch (libtransistor)
@@ -612,7 +614,11 @@ else
 	EXT?=dll
    TARGET := $(TARGET_NAME)_libretro.$(EXT)
    CC ?= gcc
-   SHARED := -shared -static-libgcc -static-libstdc++ -s -Wl,--version-script=libretro/link.T
+   SHARED := -shared -static-libgcc -static-libstdc++
+   ifneq ($(DEBUG), 1)
+   SHARED += -s
+   endif  
+   SHARED += -Wl,--version-script=libretro/link.T
    CFLAGS += -D__WIN32__ -Wno-missing-field-initializers -DHAVE_STRLWR
 LIBS =
 endif
